@@ -1,9 +1,7 @@
 import React from "react";
 
-import { Title } from "./title";
-import { FilterCheckbox } from "./filter-checkbox";
 import { Input } from "../ui";
-import { RangeSlider } from "./range-slider";
+import { Title, RangeSlider, FilterCheckbox } from "./";
 
 interface Props {
   className?: string;

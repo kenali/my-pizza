@@ -2,9 +2,9 @@ import React from "react";
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
-import { Container } from "../shared";
-import { Button } from "../ui";
 import { User, ShoppingCart, ArrowRight } from "lucide-react";
+import { Container } from "./";
+import { Button } from "../ui";
 
 interface Props {
   className?: string;
