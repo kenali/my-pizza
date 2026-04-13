@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React from 'react';
 import { Checkbox } from '../ui';
 
 export interface FilterChecboxProps {
