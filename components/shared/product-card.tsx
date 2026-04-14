@@ -15,8 +15,8 @@ interface Props {
 export const ProductCard = ({
   id,
   name,
-  price,
   imageUrl,
+  price,
   className,
 }: Props) => {
   return (
