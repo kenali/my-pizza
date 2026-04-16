@@ -11,6 +11,7 @@
     "prisma:studio": "prisma studio"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.7.0",
     "@prisma/client": "^7.7.0",
     "@radix-ui/react-checkbox": "^1.1.4",
     "@radix-ui/react-dialog": "^1.1.6",
@@ -22,6 +23,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.475.0",
     "next": "^14.2.26",
+    "pg": "^8.20.0",
     "prisma": "^7.7.0",
     "react": "^18",
     "react-dom": "^18",
