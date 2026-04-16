@@ -10,11 +10,23 @@ model User {
   id Int @id @default(autoincrement())
 
   fullName String
-  email String
+  email String @unique 
   password String
+
+  cart Cart?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt()
+
+}
+
+model Category {
+   id Int @id @default(autoincrement())
+   name String @unique
+   products Product[]
+
+   createdAt DateTime @default(now())
+   updatedAt DateTime @updatedAt()
 }
 
 model Product {
@@ -22,6 +34,53 @@ model Product {
 
   name String
   imageUrl String
+
+  ingredents Ingredient[]
+  items ProductItem[]
+
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+}
+
+model ProductItem {
+  id Int @id @default(autoincrement())
+
+  price Int
+  size Int?
+  pizzaType Int?
+
+  product Product @relation(fields: [productId], references: [id])
+  productId Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+}
+
+model Ingredient {
+  id Int @id @default(autoincrement())
+
+  name String
+  price Int
+  imageUrl String
+
+  products Product[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+}
+
+model Cart {
+  id Int @id @default(autoincrement())
+
+  user   User? @relation(fields: [userId], references: [id])
+  userId Int? @unique
+
+  token String?
+
+  totalAmount Int @default(0)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt()
