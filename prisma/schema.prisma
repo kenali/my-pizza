@@ -12,8 +12,15 @@ model User {
   fullName String
   email String @unique 
   password String
+  role UserRole @default(USER)
+  verified DateTime?
+
+  provider String?
+  providerID String?  
 
   cart Cart?
+  orders Order[]
+  verificationCode VerificationCode? 
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt()
@@ -34,7 +41,7 @@ model Product {
   name String
   imageUrl String
 
-  ingredents Ingredient[]
+  ingredients Ingredient[]
   items ProductItem[]
 
   category Category @relation(fields: [categoryId], references: [id])
@@ -51,7 +58,7 @@ model ProductItem {
   size Int?
   pizzaType Int?
 
-   cartItems CartItem[]
+  cartItems CartItem[]
 
   product Product @relation(fields: [productId], references: [id])
   productId Int
@@ -68,6 +75,7 @@ model Ingredient {
   imageUrl String
 
   products Product[]
+  cartItems CartItem[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt()
@@ -92,11 +100,62 @@ model Cart {
 model CartItem {
   id Int @id @default(autoincrement())
 
-  productItem ProductItem @relation(fields: [productItemId], references: [id])
-  productItemId Int
-
   cart Cart @relation(fields: [cartId], references: [id])
   cartId Int
 
+  productItem ProductItem @relation(fields: [productItemId], references: [id])
+  productItemId Int
+
   quantity Int
+  ingredients Ingredient[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+}
+
+model Order {
+  id Int @id @default(autoincrement())
+
+  user   User? @relation(fields: [userId], references: [id])
+  userId Int?
+
+  token String
+
+  totalAmount Int
+  status OrderStatus
+  paymentId String
+
+  items Json
+
+  fullName String
+  email    String
+  phone    String
+  address  String
+  comment  String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+}
+
+model VerificationCode {
+  id Int @id @default(autoincrement())
+
+  user User @relation(fields: [userId], references: [id])
+  userId Int @unique
+
+  code String @unique
+
+  createAt DateTime @default(now())
+  @@unique([userId, code])
+}
+
+enum OrderStatus {
+  PENDING
+  SUCCEEDED
+  CANCELLED
+}
+
+enum UserRole {
+  USER
+  ADMIN
 }
