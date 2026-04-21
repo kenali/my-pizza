@@ -54,10 +54,6 @@ async function up() {
     data: products,
   });
 
-  await prisma.product.createMany({
-    data: products,
-  });
-
   const pizza1 = await prisma.product.create({
     data: {
       name: "Пепперони фреш",
