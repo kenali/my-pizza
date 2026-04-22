@@ -8,25 +8,28 @@ type Item = FilterChecboxProps;
 
 interface Props {
   title: string;
+  name?: string;
   items: Item[];
-  defaultItems: Item[];
+  defaultItems?: Item[];
   limit?: number;
   loading?: boolean;
   searchInputPlaceholder?: string;
-  onChange?: (values: string[]) => void;
+  onClickCheckbox?: (id: string) => void;
+  selected?: Set<string>;
   defaultValue?: string[];
   className?: string;
 }
 
 export const CheckboxFiltersGroup: React.FC<Props> = ({
   title,
+  name,
   items,
   defaultItems,
   limit = 6,
   loading,
   searchInputPlaceholder = "Поиск...",
-  onChange,
-  defaultValue,
+  onClickCheckbox,
+  selected,
   className,
 }) => {
   const [showAll, setShowAll] = useState(false);
@@ -42,7 +45,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
           .map((_, index) => (
             <Skeleton key={index} className="h-6 mb-4 rounded-[8px]" />
           ))}
-          <Skeleton className="w-28 h-6 mb-4 rounded-[8px]" />
+        <Skeleton className="w-28 h-6 mb-4 rounded-[8px]" />
       </div>
     );
   }
@@ -51,7 +54,7 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
     ? items.filter((item) =>
         item.text.toLowerCase().includes(searchValue.toLowerCase()),
       )
-    : defaultItems.slice(0, limit);
+    : (defaultItems || items).slice(0, limit);
 
   const onChangeSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -74,12 +77,13 @@ export const CheckboxFiltersGroup: React.FC<Props> = ({
       <div className="flex flex-col gap-4 max-h-96 pr-2 overflow-auto scrollbar">
         {list.map((item, index) => (
           <FilterCheckbox
+            name={name}
             key={index}
             text={item.text}
             value={item.value}
             endAdornment={item.endAdornment}
-            checked={false}
-            onCheckedChange={(idx) => console.log(idx)}
+            checked={selected?.has(item.value)}
+            onCheckedChange={() => onClickCheckbox?.(item.value)}
           />
         ))}
       </div>
