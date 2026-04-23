@@ -46,7 +46,7 @@ export default function ProductsGroupList({
             key={product.id}
             id={product.id}
             name={product.name}
-            imageUrl="https://varus.ua/img/carousel/1140/1140/2627131/0?t=1745945625"
+            imageUrl={product.imageUrl}
             price={product.items[0].price}
           />
         ))}

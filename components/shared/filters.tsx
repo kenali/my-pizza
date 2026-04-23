@@ -71,7 +71,7 @@ export const Filters = ({ className }: Props) => {
             placeholder="1000"
             min={100}
             max={1000}
-            value={String(filters.prices.priceFrom)}
+            value={String(filters.prices.priceTo)}
             onChange={(e) => filters.setPrices("priceTo", Number(e.target.value))}
           />
         </div>
