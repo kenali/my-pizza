@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useEffect } from "react";
 import { useIntersection } from "react-use";
@@ -22,8 +22,7 @@ export default function ProductsGroupList({
   listClassName,
   className,
 }: Props) {
-
-  const setActiveCategoryid = useCategoryStore((s) => s.setActiveId)
+  const setActiveCategoryid = useCategoryStore((s) => s.setActiveId);
 
   const intersectionRef = React.useRef(null);
   const intersection = useIntersection(intersectionRef, {
@@ -32,7 +31,7 @@ export default function ProductsGroupList({
 
   useEffect(() => {
     if (intersection?.isIntersecting) {
-     setActiveCategoryid(categoryId)
+      setActiveCategoryid(categoryId);
     }
   }, [categoryId, intersection?.isIntersecting, setActiveCategoryid, title]);
 
