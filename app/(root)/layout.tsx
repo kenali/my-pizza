@@ -1,5 +1,6 @@
+import { Header } from "@/shared/components/shared";
 import type { Metadata } from "next";
-import { Header } from "@/components/shared/header";
+
 
 export const metadata: Metadata = {
   title: "My Pizza",
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function HomeLayout({
   children,
-  modal
+  modal,
 }: Readonly<{
   children: React.ReactNode;
   modal: React.ReactNode;

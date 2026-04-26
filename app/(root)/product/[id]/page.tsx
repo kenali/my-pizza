@@ -3,7 +3,7 @@ import {
   GroupVariants,
   PizzaImage,
   Title,
-} from "@/components/shared";
+} from "@/shared/components/shared";
 import prisma from "@/prisma/prisma-client";
 import { notFound } from "next/navigation";
 
@@ -17,7 +17,6 @@ export default async function ProductPage({
       id: Number(id),
     },
   });
-
 
   if (!product) {
     return notFound();
@@ -40,7 +39,7 @@ export default async function ProductPage({
           </p>
 
           <GroupVariants
-            selectedValue='2'
+            selectedValue="2"
             items={[
               { name: "Маленькая", value: "1" },
               { name: "Средняя", value: "2" },
