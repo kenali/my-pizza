@@ -23,6 +23,7 @@ export const ProductsGroupList = ({
   className,
 }: Props) => {
   const setActiveCategoryid = useCategoryStore((s) => s.setActiveId);
+     console.log(6666,items)
 
   const intersectionRef = React.useRef(null);
   const intersection = useIntersection(intersectionRef, {
