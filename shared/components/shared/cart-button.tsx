@@ -16,7 +16,7 @@ export const CartButton = ({ className }: Props) => {
         <div className="flex items-center gap-1 transition duration-300 group-hover:opacity-0">
           <ShoppingCart size={16} className="relative" strokeWidth={2} />
           <b>3</b>
-        </div>
+        </div> 
 
         <ArrowRight
           size={20}

@@ -11,8 +11,8 @@ import { usePizzaOptions } from "@/shared/hooks";
 import { getPizzaDetails } from "@/shared/lib";
 
 interface Props {
-  imageUrl: string;
   name: string;
+  imageUrl: string;
   items: ProductItem[];
   ingredients: Ingredient[];
   onClickAddCart?: VoidFunction;
@@ -22,8 +22,8 @@ interface Props {
 export const ChoosePizzaForm = ({
   name,
   imageUrl,
-  ingredients,
   items,
+  ingredients,
   onClickAddCart,
   className,
 }: Props) => {

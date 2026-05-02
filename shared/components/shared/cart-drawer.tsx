@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { ReactNode, useEffect } from "react";
 import Link from "next/link";
@@ -26,10 +26,18 @@ export const CartDrawer = ({ children, className }: Props) => {
   const totalAmount = useCartStore((state) => state.totalAmount);
   const items = useCartStore((state) => state.items);
   const fetchCartItems = useCartStore((state) => state.fetchCartItems);
+  const updateItemQuantity = useCartStore((state) => state.updateItemQuantity);
+  const removeCartItem = useCartStore((state) => state.removeCartItem);
 
   useEffect(() => {
     fetchCartItems();
   }, []);
+
+  const onClickCountButton = (id:number, quantity: number, type: 'plus' | 'minus') => {
+    const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
+    updateItemQuantity(id,newQuantity)
+  }
+
 
   return (
     <Sheet>
@@ -42,12 +50,12 @@ export const CartDrawer = ({ children, className }: Props) => {
         </SheetHeader>
 
         <div className="-mx-6 mt-5 overflow-auto flex-1">
-          <div className="mb-2">
+          <div className="mb-2"> 
             {items.map((item) => (
               <CartDrawerItem
                 key={item.id}
                 id={item.id}
-                imageUrl={item.imageUrl}
+                imageUrl={item.imageUrl} 
                 details={
                   item.pizzaSize && item.pizzaType
                     ? getCartItemDetails(
@@ -60,6 +68,8 @@ export const CartDrawer = ({ children, className }: Props) => {
                 name={item.name}
                 price={item.price}
                 quantity={item.quantity}
+                onClickCountButton={(type) => onClickCountButton(item.id, item.quantity,type)}
+                onClickRemove={() => removeCartItem(item.id)}
               />
             ))}
           </div>
