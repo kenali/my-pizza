@@ -77,8 +77,9 @@ export async function DELETE(
   } catch (error) {
     console.log("[CART_PATCH] Server error", error);
     return NextResponse.json(
-      { message: "Не удалось обновить корзину" },
+      { message: "Не удалось удалить корзину" },
       { status: 500 },
     );
   }
 }
+
