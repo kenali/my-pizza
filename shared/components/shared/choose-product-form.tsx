@@ -6,7 +6,8 @@ interface Props {
   imageUrl: string;
   name: string;
   price: number;
-  onSubmit?: () => void;
+  onSubmit: () => void;
+  loading?: boolean;
   className?: string;
 }
 
@@ -15,6 +16,7 @@ export const ChooseProductForm = ({
   name,
   price,
   onSubmit,
+  loading,
   className,
 }: Props) => {
 
@@ -36,10 +38,11 @@ export const ChooseProductForm = ({
         <Title text={name} size="md" className="font-extrabold mb-1" />
 
         <Button
+          loading={loading}
           onClick={handleClickAdd}
           className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10"
         >
-          Добавить в корзину за {price}
+          Добавить в корзину за {price} ₴
         </Button>
       </div>
     </div>

@@ -1,4 +1,4 @@
-"use client";
+'use client'
 import { cn } from "@/shared/lib/utils";
 import { Ingredient, ProductItem } from "@prisma/client";
 import { PizzaImage } from "./pizza-image";
@@ -15,6 +15,7 @@ interface Props {
   imageUrl: string;
   items: ProductItem[];
   ingredients: Ingredient[];
+  loading?: boolean;
   onSubmit: (itemId: number, ingredients: number[]) => void;
   className?: string;
 }
@@ -24,6 +25,7 @@ export const ChoosePizzaForm = ({
   imageUrl,
   items,
   ingredients,
+  loading,
   onSubmit,
   className,
 }: Props) => {
@@ -91,10 +93,11 @@ export const ChoosePizzaForm = ({
         </div>
 
         <Button
+        loading={loading}
           onClick={handleClickAdd}
           className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10"
         >
-          Добавить в корзину за {totalPrice}
+          Добавить в корзину за {totalPrice} ₴
         </Button>
       </div>
     </div>

@@ -21,6 +21,5 @@ export default async function ProductModalPage({
     return notFound();
   }
 
-
   return <ChooseProductModal product={product} />;
 }
