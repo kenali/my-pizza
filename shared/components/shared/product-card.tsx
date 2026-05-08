@@ -3,11 +3,13 @@ import Link from "next/link";
 import { Title } from "./title";
 import { Button } from "../ui";
 import { Plus } from "lucide-react";
+import { Ingredient } from "@prisma/client";
 
 interface Props {
   id: number;
   name: string;
   price: number;
+  ingredients: Ingredient[];
   imageUrl: string;
   className?: string;
 }
@@ -16,6 +18,7 @@ export const ProductCard = ({
   id,
   name,
   imageUrl,
+  ingredients,
   price,
   className,
 }: Props) => {
@@ -29,8 +32,7 @@ export const ProductCard = ({
         <Title text={name} size="sm" className="mb-1 mt-3 font-bold" />
 
         <p className="text-sm text-gray-400">
-          Цыпленок, Моцарелла, сыры чеддер и пармезан, сырный соус, томаты, соус
-          альфредо, чеснок
+          {ingredients.map((ingredient) => ingredient.name).join(", ")}
         </p>
 
         <div className="flex justify-between items-center mt-4">

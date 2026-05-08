@@ -21,3 +21,4 @@ export { CartDrawer } from "./cart-drawer";
 export { CartDrawerItem } from "./cart-drawer-item";
 export { CountIconButton } from "./count-icon-button";
 export { CountButton } from "./count-button";
+export { ProductForm } from "./product-form";

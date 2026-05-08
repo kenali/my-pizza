@@ -17,7 +17,7 @@ export const Filters = ({ className }: Props) => {
     text: item.name,
   }));
 
-  const updateprices = (prices: number[]) => {
+  const updatePrices = (prices: number[]) => {
     filters.setPrices("priceFrom", prices[0]);
     filters.setPrices("priceTo", prices[1]);
   };
@@ -26,7 +26,7 @@ export const Filters = ({ className }: Props) => {
     <div className={className}>
       <Title text="Фильтрация" size="sm" className="mb-5 font-bold" />
 
-      {/* Верхние чекбоксы */}
+      {/* Top checkboxes */}
 
       <CheckboxFiltersGroup
         title="Тип теста"
@@ -53,7 +53,7 @@ export const Filters = ({ className }: Props) => {
         ]}
       />
 
-      {/* Фильтр цен */}
+      {/* Price filters */}
       <div className="mt-5 border-y border-y-neutral-100 py-6 pb-7">
         <p className="font-bold mb-3">Цена от и до:</p>
         <div className="flex gap-3 mb-5">
@@ -87,7 +87,7 @@ export const Filters = ({ className }: Props) => {
             filters.prices.priceFrom || 0,
             filters.prices.priceTo || 1000,
           ]}
-          onValueChange={updateprices}
+          onValueChange={updatePrices}
         />
       </div>
 
