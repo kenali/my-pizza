@@ -9,11 +9,9 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
+      <main>
         DASHBOARD HEADER
         {children}
-      </body>
-    </html>
+      </main>
   );
 }

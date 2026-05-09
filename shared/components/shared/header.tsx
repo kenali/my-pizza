@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 import { cn } from "@/shared/lib/utils";
-import { User, ShoppingCart, ArrowRight } from "lucide-react";
+import { User } from "lucide-react";
 import { Container, SearchInput } from ".";
 import { Button } from "../ui";
 import Link from "next/link";
@@ -10,11 +10,17 @@ import { CartButton } from "./cart-button";
 
 interface Props {
   className?: string;
+  hasSearch?: boolean;
+  hasCart?: boolean;
 }
 
-export const Header: React.FC<Props> = ({ className }) => {
+export const Header: React.FC<Props> = ({
+  className,
+  hasSearch = true,
+  hasCart = true,
+}) => {
   return (
-    <header className={cn("border border-b", className)}>
+    <header className={cn("border-b", className)}>
       <Container className="flex items-center justify-between py-8">
         {/* Левая часть */}
         <Link href={"/"}>
@@ -30,9 +36,11 @@ export const Header: React.FC<Props> = ({ className }) => {
         </Link>
 
         {/* Средняя часть */}
-        <div className="mx-10 flex-1">
-          <SearchInput />
-        </div>
+        {hasSearch && (
+          <div className="mx-10 flex-1">
+            <SearchInput />
+          </div>
+        )}
 
         {/* Правая часть */}
         <div className="flex items-center gap-3">
@@ -41,7 +49,7 @@ export const Header: React.FC<Props> = ({ className }) => {
             Войти
           </Button>
 
-          <CartButton />
+         {hasCart && <CartButton />}
         </div>
       </Container>
     </header>

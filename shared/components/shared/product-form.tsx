@@ -29,7 +29,7 @@ export const ProductForm = ({ product, onClose }: Props) => {
       onClose?.();
     } catch (error) {
       console.error(error);
-      toast.error(`${product.name} Не удалось добавить в корзину`);
+      toast.error(`${product.name} не удалось добавить в корзину`);
     }
   };
 
