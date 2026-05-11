@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { cn } from "@/shared/lib/utils";
 import { Ingredient, ProductItem } from "@prisma/client";
 import { PizzaImage } from "./pizza-image";
@@ -93,7 +93,7 @@ export const ChoosePizzaForm = ({
         </div>
 
         <Button
-        loading={loading}
+          loading={loading}
           onClick={handleClickAdd}
           className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10"
         >

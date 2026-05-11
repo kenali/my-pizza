@@ -19,6 +19,9 @@ export async function PATCH(
     const cartItem = await prisma.cartItem.findFirst({
       where: {
         id,
+        cart: {
+          token,
+        },
       },
     });
 
@@ -29,6 +32,9 @@ export async function PATCH(
     await prisma.cartItem.update({
       where: {
         id,
+        cart: {
+          token,
+        },
       },
       data: { quantity: data.quantity },
     });
@@ -82,4 +88,3 @@ export async function DELETE(
     );
   }
 }
-

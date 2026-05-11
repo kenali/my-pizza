@@ -89,7 +89,7 @@ model Cart {
 
   items CartItem[]
 
-  token String?
+  token String
 
   totalAmount Int @default(0)
 
@@ -123,7 +123,7 @@ model Order {
 
   totalAmount Int
   status OrderStatus
-  paymentId String
+  paymentId String?
 
   items Json
 

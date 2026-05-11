@@ -1,7 +1,7 @@
 "use client";
 
 import { CheckoutItemDetails, WhiteBlock } from "@/shared/components/shared";
-import { Button } from "@/shared/components/ui";
+import { Button, Skeleton } from "@/shared/components/ui";
 import { cn } from "@/shared/lib/utils";
 import { ArrowRight, Package, Percent, Truck } from "lucide-react";
 
@@ -10,17 +10,24 @@ const DELIVERY_PRICE = 250;
 
 interface Props {
   totalAmount: number;
+  loading?: boolean;
   className?: string;
 }
 
-export const CheckoutSidebar = ({ className, totalAmount }: Props) => {
+export const CheckoutSidebar = ({ totalAmount, loading, className }: Props) => {
   const vatPrice = (totalAmount * VAT) / 100;
   const totalPrice = totalAmount + vatPrice + DELIVERY_PRICE;
   return (
     <WhiteBlock className={cn("p-6 sticky top-4", className)}>
       <div className="flex flex-col gap-1">
         <span className="text-xl">Итого:</span>
-        <span className="text-[34px] font-extrabold">{totalPrice} ₴</span>
+        {loading ? (
+          <Skeleton className="h-11 w-48" />
+        ) : (
+          <span className="h-11 text-[34px] font-extrabold">
+            {totalPrice} ₴
+          </span>
+        )}
       </div>
 
       <CheckoutItemDetails
@@ -30,7 +37,13 @@ export const CheckoutSidebar = ({ className, totalAmount }: Props) => {
             Стоимость корзины:
           </div>
         }
-        value={`${totalAmount} ₴`}
+        value={
+          loading ? (
+            <Skeleton className="h-6 w-16 rounded-[6px]" />
+          ) : (
+            `${totalAmount} ₴`
+          )
+        }
       />
       <CheckoutItemDetails
         title={
@@ -39,7 +52,13 @@ export const CheckoutSidebar = ({ className, totalAmount }: Props) => {
             Налоги:
           </div>
         }
-        value={`${vatPrice} ₴`}
+        value={
+          loading ? (
+            <Skeleton className="h-6 w-16 rounded-[6px]" />
+          ) : (
+            `${vatPrice} ₴`
+          )
+        }
       />
       <CheckoutItemDetails
         title={
@@ -48,10 +67,17 @@ export const CheckoutSidebar = ({ className, totalAmount }: Props) => {
             Доставка:
           </div>
         }
-        value={`${DELIVERY_PRICE} ₴`}
+        value={
+          loading ? (
+            <Skeleton className="h-6 w-16 rounded-[6px]" />
+          ) : (
+            `${DELIVERY_PRICE} ₴`
+          )
+        }
       />
 
       <Button
+        loading={loading}
         type="submit"
         className="w-full h-14 rounded-2xl mt-6 text-base font-bold"
       >

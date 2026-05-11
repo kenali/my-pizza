@@ -2,9 +2,7 @@
 
 import { useState } from "react";
 import AsyncSelect from "react-select/async";
-import { Input } from "../ui"; // Используй свой компонент инпута или обычный <input />
-
-const API_KEY = process.env.NEXT_PUBLIC_NOVA_POSHTA_API_KEY;
+import { Input } from "../ui";
 
 interface Props {
   onChange: (value: string) => void;
@@ -15,7 +13,7 @@ export const AddressInput = ({ onChange }: Props) => {
   const [selectedStreet, setSelectedStreet] = useState<any>(null);
   const [house, setHouse] = useState("");
 
-  
+  const API_KEY = process.env.NEXT_PUBLIC_NOVA_POSHTA_API_KEY;
   const updateFullAddress = (city: any, street: any, houseNum: string) => {
     if (city && street && houseNum) {
       onChange(`${city.label}, ${street.label}, буд. ${houseNum}`);
@@ -111,7 +109,7 @@ export const AddressInput = ({ onChange }: Props) => {
           />
         </div>
         
-        <input
+        <Input
           className="flex h-10 w-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
           placeholder="Дом/Кв"
           value={house}

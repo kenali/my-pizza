@@ -33,3 +33,4 @@ export { AddressInput } from "./address-input";
 export * from "./form";
 export * from "./checkout";
 export * from "./modals";
+export * from "./email-templates";
