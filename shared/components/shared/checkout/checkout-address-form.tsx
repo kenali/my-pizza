@@ -1,20 +1,31 @@
-import { WhiteBlock } from "..";
-import { Input, Textarea } from "../../ui";
+"use client";
+import { Controller, useFormContext } from "react-hook-form";
+import { AddressInput, ErrorText, FormTextarea, WhiteBlock } from "..";
 
 interface Props {
   className?: string;
 }
 
 export const CheckoutAddressForm = ({ className }: Props) => {
+  const { control } = useFormContext();
   return (
     <WhiteBlock title="3. Адрес доставки" className={className}>
       <div className="flex flex-col gap-5">
-        <Input
-          name="firstName"
-          className="text-base"
-          placeholder="Введите адрес"
+        <Controller
+          control={control}
+          name="address"
+          render={({ field, fieldState }) => (
+            <>
+              <AddressInput onChange={field.onChange} />
+              {fieldState.error?.message && (
+                <ErrorText text={fieldState.error.message} />
+              )}
+            </>
+          )}
         />
-        <Textarea
+
+        <FormTextarea
+          name="comment"
           className="text-base"
           placeholder="Комментарий к заказу"
           rows={5}
