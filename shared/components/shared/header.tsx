@@ -1,12 +1,14 @@
-import React from "react";
-import Image from "next/image";
-
+'use client'
 import { cn } from "@/shared/lib/utils";
 import { User } from "lucide-react";
 import { Container, SearchInput } from ".";
 import { Button } from "../ui";
 import Link from "next/link";
+import Image from "next/image";
 import { CartButton } from "./cart-button";
+import { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import toast from "react-hot-toast";
 
 interface Props {
   className?: string;
@@ -14,11 +16,21 @@ interface Props {
   hasCart?: boolean;
 }
 
-export const Header: React.FC<Props> = ({
+export const Header = ({
   className,
   hasSearch = true,
   hasCart = true,
-}) => {
+}: Props) => {
+  const searchParams = useSearchParams()
+
+useEffect(() => {
+  if (searchParams.has('id')) { 
+    toast.success('Заказ успешно оформлен! 🍕', {
+      duration: 5000,
+    });
+  }
+}, [searchParams]);
+
   return (
     <header className={cn("border-b", className)}>
       <Container className="flex items-center justify-between py-8">
@@ -49,7 +61,7 @@ export const Header: React.FC<Props> = ({
             Войти
           </Button>
 
-         {hasCart && <CartButton />}
+          {hasCart && <CartButton />}
         </div>
       </Container>
     </header>

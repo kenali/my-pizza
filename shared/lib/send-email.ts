@@ -1,6 +1,5 @@
 import { Resend } from "resend";
 
-
 export const sendEmail = async (
   to: string,
   subject: string,

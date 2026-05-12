@@ -3,6 +3,7 @@ import prisma from "@/prisma/prisma-client";
 import { PayOrderTemplate } from "@/shared/components";
 import { CheckoutFormValues } from "@/shared/constants";
 import { sendEmail } from "@/shared/lib";
+import { stripe } from "@/shared/lib/stripe";
 import { OrderStatus } from "@prisma/client";
 import { cookies } from "next/headers";
 
@@ -15,6 +16,7 @@ export const createOrder = async (data: CheckoutFormValues) => {
       throw new Error("Cart token not found");
     }
 
+    // 1. Ищем корзину
     const userCart = await prisma.cart.findFirst({
       include: {
         user: true,
@@ -42,9 +44,10 @@ export const createOrder = async (data: CheckoutFormValues) => {
       throw new Error("Cart is empty");
     }
 
+    // 2. Создаем заказ в БД
     const order = await prisma.order.create({
       data: {
-        fullName: data.firstName + " " + data.lastName,
+        fullName: `${data.firstName} ${data.lastName}`,
         email: data.email,
         phone: data.phone,
         address: data.address,
@@ -55,6 +58,31 @@ export const createOrder = async (data: CheckoutFormValues) => {
         token: cartToken,
         paymentId: "",
       },
+    });
+
+    // 3. Создаем сессию оплаты в Stripe
+    const session = await stripe.checkout.sessions.create({
+      metadata: {
+        orderId: order.id,
+      },
+      line_items: userCart.items.map((item) => ({
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: item.productItem.product.name,
+          },
+          unit_amount: item.productItem.price * 100,
+        },
+        quantity: item.quantity,
+      })),
+      mode: "payment",
+      success_url: `${process.env.NEXT_PUBLIC_URL}/checkout/success?id=${order.id}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_URL}/checkout?error=payment_cancelled`,
+    });
+
+    await prisma.order.update({
+      where: { id: order.id },
+      data: { paymentId: session.id },
     });
 
     await prisma.cart.update({
@@ -72,18 +100,19 @@ export const createOrder = async (data: CheckoutFormValues) => {
       },
     });
 
-    sendEmail(
+    await sendEmail(
       data.email,
       "My Pizza / Оплатите заказ #" + order.id,
       PayOrderTemplate({
         orderId: order.id,
         totalAmount: order.totalAmount,
-        paymentUrl: "https://resend.com/docs/send-with-nextjs",
+        paymentUrl: session.url || "",
       }),
     );
 
-    return "https://resend.com/docs/send-with-nextjs";
+    return session.url;
   } catch (error) {
     console.log("[CreateOrder] Server error", error);
+    throw error;
   }
 };
