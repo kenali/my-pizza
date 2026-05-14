@@ -153,6 +153,54 @@ async function up() {
       },
     },
   });
+
+  await prisma.story.createMany({
+    data: [
+      {
+        previewImageUrl: "/assets/products/americano.webp",
+      },
+      {
+        previewImageUrl: "/assets/products/coffee-latte.webp",
+      },
+      {
+        previewImageUrl: "/assets/products/banana-milkshake.webp",
+      },
+      {
+        previewImageUrl: "/assets/pizzas/pepperoni-fresh.webp",
+      },
+      {
+        previewImageUrl: "/assets/pizzas/chorizo-fresh.webp",
+      },
+      {
+        previewImageUrl: "/assets/ingredients/ham.png",
+      },
+    ],
+  });
+
+  await prisma.storyItem.createMany({
+    data: [
+      {
+        storyId: 1,
+        sourceUrl: "/assets/products/dodster.webp",
+      },
+      {
+        storyId: 1,
+        sourceUrl: "/assets/products/irish-cappuccino.webp",
+      },
+      {
+        storyId: 1,
+        sourceUrl: "/assets/pizzas/cheese.webp",
+      },
+      {
+        storyId: 1,
+        sourceUrl: "/assets/ingredients/fresh-tomatoes.png",
+      },
+      {
+        storyId: 1,
+        sourceUrl: "/assets/ingredients/italian-herbs.png",
+      },
+    ],
+  });
 }
 async function down() {
   await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;

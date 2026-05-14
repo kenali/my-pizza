@@ -4,14 +4,17 @@ import {
   TopBar,
   Filters,
   ProductsGroupList,
+  Stories,
 } from "@/shared/components/shared";
 import { Suspense } from "react";
-import {findPizzas, GetSearchParams } from "@/shared/lib/find-pizzas";
+import { findPizzas, GetSearchParams } from "@/shared/lib/find-pizzas";
 
-
-export default async function Home({searchParams} : {searchParams: GetSearchParams}) {
-
-  const categories = await findPizzas(searchParams)
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: GetSearchParams;
+}) {
+  const categories = await findPizzas(searchParams);
 
   return (
     <>
@@ -25,9 +28,11 @@ export default async function Home({searchParams} : {searchParams: GetSearchPara
         )}
       />
 
+      <Stories />
+
       <Container className="mt-10 pb-14">
         <div className="flex gap-[80px]">
-          {/* Фильтрация */}
+          {/* Filters */}
           <div className="w-[250px]">
             <Suspense>
               <Filters />
