@@ -6,7 +6,7 @@ import { sendEmail } from "@/shared/lib";
 import { getUserSession } from "@/shared/lib/get-user-session";
 import { stripe } from "@/shared/lib/stripe";
 import { OrderStatus, Prisma } from "@prisma/client";
-import { hashSync } from "bcrypt";
+import { hashSync } from "bcryptjs";
 import { cookies } from "next/headers";
 
 export const createOrder = async (data: CheckoutFormValues) => {
