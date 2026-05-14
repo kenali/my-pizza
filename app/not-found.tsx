@@ -1,8 +1,10 @@
+import { Container } from "@/shared/components/shared/container";
+import { Header } from "@/shared/components/shared/header";
 import Image from "next/image";
 import Link from "next/link";
-import { Container, Header } from "@/shared/components/shared";
 
-export const dynamic = 'force-dynamic'; 
+
+export const dynamic = "force-dynamic";
 
 export default function NotFound() {
   return (
