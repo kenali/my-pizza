@@ -25,6 +25,7 @@ export const Header = ({
 
   useEffect(() => {
     let toastMessage = "";
+
     if (searchParams.has("paid")) {
       toastMessage = "Заказ успешно оплачен! Информация отправлена на почту 🍕";
     }
@@ -32,16 +33,20 @@ export const Header = ({
       toastMessage = "Почта успешно подтверждена! 🍕";
     }
 
-    if(toastMessage) {
-      setTimeout(() => {
-        router.replace('/');
-        toast.success(toastMessage, {
-          duration: 3000
-        })
-      }, 1000)
+    // 1. Объявляем переменную в общей области видимости хука
+    let timer: NodeJS.Timeout | undefined;
+
+    if (toastMessage) {
+      timer = setTimeout(() => {
+        router.replace("/");
+        toast.success(toastMessage, { duration: 3000 });
+      }, 1000);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [searchParams, router]);
 
   return (
     <header className={cn("border-b", className)}>
