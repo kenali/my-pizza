@@ -2,6 +2,8 @@ import prisma from "@/prisma/prisma-client";
 import { cookies } from "next/headers";
 import { notFound, redirect } from "next/navigation";
 
+export const dynamic = 'force-dynamic'; 
+
 export default async function CheckoutSuccessPage({
   searchParams,
 }: {

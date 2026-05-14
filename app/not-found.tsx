@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container, Header } from "@/shared/components/shared";
 
+export const dynamic = 'force-dynamic'; 
+
 export default function NotFound() {
   return (
     <main className="min-h-screen bg-background">
