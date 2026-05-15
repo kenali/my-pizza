@@ -1,6 +1,6 @@
 import { Prisma } from "@prisma/client";
 import prisma from "./prisma-client";
-import { hashSync } from "bcrypt";
+import { hashSync } from "bcryptjs";
 import { categories, _ingredients, products } from "./constants";
 
 const randomDecimalNumber = (min: number, max: number) => {
@@ -56,7 +56,7 @@ async function up() {
 
   const pizza1 = await prisma.product.create({
     data: {
-      name: "Пепперони фреш",
+      name: "Pepperoni Fresh",
       imageUrl: "/assets/pizzas/pepperoni-fresh.webp",
       categoryId: 1,
       ingredients: {
@@ -67,7 +67,7 @@ async function up() {
 
   const pizza2 = await prisma.product.create({
     data: {
-      name: "Сырная",
+      name: "Cheese",
       imageUrl: "/assets/pizzas/cheese.webp",
       categoryId: 1,
       ingredients: {
@@ -78,7 +78,7 @@ async function up() {
 
   const pizza3 = await prisma.product.create({
     data: {
-      name: "Чоризо фреш",
+      name: "Chorizo Fresh",
       imageUrl: "/assets/pizzas/chorizo-fresh.webp",
       categoryId: 1,
       ingredients: {
@@ -89,12 +89,12 @@ async function up() {
 
   await prisma.productItem.createMany({
     data: [
-      // Пицца "Пепперони фреш"
+      // Pizza "Pepperoni Fresh"
       generateProductItem({ productId: pizza1.id, pizzaType: 1, size: 20 }),
       generateProductItem({ productId: pizza1.id, pizzaType: 2, size: 30 }),
       generateProductItem({ productId: pizza1.id, pizzaType: 2, size: 40 }),
 
-      // Пицца "Сырная"
+      // Pizza "Cheese"
       generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 20 }),
       generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 30 }),
       generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 40 }),
@@ -102,12 +102,12 @@ async function up() {
       generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 30 }),
       generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 40 }),
 
-      // Пицца "Чоризо фреш"
+      // Pizza "Chorizo Fresh"
       generateProductItem({ productId: pizza3.id, pizzaType: 1, size: 20 }),
       generateProductItem({ productId: pizza3.id, pizzaType: 2, size: 30 }),
       generateProductItem({ productId: pizza3.id, pizzaType: 2, size: 40 }),
 
-      // Остальные продукты
+      // Other products
       generateProductItem({ productId: 1 }),
       generateProductItem({ productId: 2 }),
       generateProductItem({ productId: 3 }),

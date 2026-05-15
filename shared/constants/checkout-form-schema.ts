@@ -2,14 +2,14 @@ import { z } from "zod";
 export const checkoutFormSchema = z.object({
   firstName: z
     .string()
-    .min(2, { message: "Имя должно содержать не менее двух символов" }),
+    .min(2, { message: "First name must contain at least two characters" }),
   lastName: z
     .string()
-    .min(2, { message: "Фамилия должна содержать не менее двух символов" }),
-  email: z.email({ message: "Введите корректную почту" }),
-  phone: z.string().min(10, { message: "Введите корректный номер телефона" }),
-  address: z.string().min(5, { message: "Введите корректный адрес" }),
+    .min(2, { message: "Last name must contain at least two characters" }),
+  email: z.email({ message: "Enter a valid email" }),
+  phone: z.string().min(10, { message: "Enter a valid phone number" }),
+  address: z.string().min(5, { message: "Enter a valid address" }),
   comment: z.string().optional(),
 });
 
-export type CheckoutFormValues = z.infer<typeof checkoutFormSchema>
+export type CheckoutFormValues = z.infer<typeof checkoutFormSchema>;

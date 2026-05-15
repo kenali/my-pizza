@@ -150,7 +150,7 @@ model VerificationCode {
 }
 
 model Story {
-    id              Int    @id @default(autoincrement())
+    id Int  @id @default(autoincrement())
     previewImageUrl String
 
     items StoryItem[]

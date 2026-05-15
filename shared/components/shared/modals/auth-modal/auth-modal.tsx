@@ -69,7 +69,7 @@ export const AuthModal = ({ open, onClose }: Props) => {
           type="button"
           className="h-12 "
         >
-          {type === "login" ? "Регистрация" : "Войти"}
+          {type === "login" ? "Register" : "Login"}
         </Button>
       </DialogContent>
     </Dialog>

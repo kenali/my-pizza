@@ -16,7 +16,7 @@ export const AddressInput = ({ onChange }: Props) => {
   const API_KEY = process.env.NEXT_PUBLIC_NOVA_POSHTA_API_KEY;
   const updateFullAddress = (city: any, street: any, houseNum: string) => {
     if (city && street && houseNum) {
-      onChange(`${city.label}, ${street.label}, буд. ${houseNum}`);
+      onChange(`${city.label}, ${street.label}, bldg. ${houseNum}`);
     } else {
       onChange("");
     }
@@ -35,10 +35,12 @@ export const AddressInput = ({ onChange }: Props) => {
     });
     const res = await response.json();
     if (!res.success) return [];
-    return res.data[0]?.Addresses?.map((item: any) => ({
-      value: item.DeliveryCity,
-      label: item.Present,
-    })) || [];
+    return (
+      res.data[0]?.Addresses?.map((item: any) => ({
+        value: item.DeliveryCity,
+        label: item.Present,
+      })) || []
+    );
   };
 
   const loadStreetOptions = async (inputValue: string) => {
@@ -90,10 +92,10 @@ export const AddressInput = ({ onChange }: Props) => {
         isClearable
         value={selectedCity}
         loadOptions={loadCityOptions}
-        placeholder="Выберите город..."
+        placeholder="Select city..."
         onChange={handleCityChange}
       />
-      
+
       <div className="flex gap-2">
         <div className="flex-1">
           <AsyncSelect
@@ -104,14 +106,14 @@ export const AddressInput = ({ onChange }: Props) => {
             value={selectedStreet}
             loadOptions={loadStreetOptions}
             isDisabled={!selectedCity}
-            placeholder={selectedCity ? "Введите улицу..." : "Сначала город"}
+            placeholder={selectedCity ? "Enter street..." : "Select city first"}
             onChange={handleStreetChange}
           />
         </div>
-        
+
         <Input
           className="flex h-10 w-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-          placeholder="Дом/Кв"
+          placeholder="Apt/Bldg"
           value={house}
           disabled={!selectedStreet}
           onChange={handleHouseChange}

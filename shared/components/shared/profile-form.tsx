@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { User } from "@prisma/client";
 import {
@@ -37,11 +37,11 @@ export const ProfileForm = ({ data }: Props) => {
         password: data.password,
       });
 
-      toast.success("Данные обновлены", {
+      toast.success("Data updated", {
         icon: "✅",
       });
     } catch (error) {
-      toast.error("Ошибка при обновлении данных", {
+      toast.error("Error updating data", {
         icon: "❌",
       });
     }
@@ -55,19 +55,39 @@ export const ProfileForm = ({ data }: Props) => {
 
   return (
     <Container className="my-10">
-      <Title text={`Личные данные | #${data.id}`} size="md" className="font-bold" />
+      <Title
+        text={`Personal data | #${data.id}`}
+        size="md"
+        className="font-bold"
+      />
 
-
-       <FormProvider {...form}>
-        <form className="flex flex-col gap-5 w-96 mt-10" onSubmit={form.handleSubmit(onSubmit)}>
+      <FormProvider {...form}>
+        <form
+          className="flex flex-col gap-5 w-96 mt-10"
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
           <FormInput name="email" label="E-Mail" required />
-          <FormInput name="fullName" label="Полное имя" required />
+          <FormInput name="fullName" label="Full name" required />
 
-          <FormInput type="password" name="password" label="Новый пароль" required />
-          <FormInput type="password" name="confirmPassword" label="Повторите пароль" required />
+          <FormInput
+            type="password"
+            name="password"
+            label="New password"
+            required
+          />
+          <FormInput
+            type="password"
+            name="confirmPassword"
+            label="Confirm password"
+            required
+          />
 
-          <Button disabled={form.formState.isSubmitting} className="text-base mt-10" type="submit">
-            Сохранить
+          <Button
+            disabled={form.formState.isSubmitting}
+            className="text-base mt-10"
+            type="submit"
+          >
+            Save
           </Button>
 
           <Button
@@ -75,8 +95,9 @@ export const ProfileForm = ({ data }: Props) => {
             variant="secondary"
             disabled={form.formState.isSubmitting}
             className="text-base"
-            type="button">
-            Выйти
+            type="button"
+          >
+            Sign out
           </Button>
         </form>
       </FormProvider>

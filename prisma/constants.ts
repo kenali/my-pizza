@@ -1,221 +1,188 @@
 export const categories = [
   {
-    name: "Пиццы",
+    name: "Pizzas",
   },
   {
-    name: "Завтрак",
+    name: "Breakfast",
   },
   {
-    name: "Закуски",
+    name: "Snacks",
   },
   {
-    name: "Коктейли",
+    name: "Milkshakes",
   },
   {
-    name: "Напитки",
+    name: "Drinks",
   },
 ];
 
 export const _ingredients = [
   {
-    name: "Сырный бортик",
+    name: "Cheese Crust",
     price: 179,
-    imageUrl:
-      '/assets/ingredients/cheese-crust.png',
+    imageUrl: "/assets/ingredients/cheese-crust.png",
   },
   {
-    name: "Сливочная моцарелла",
+    name: "Creamy Mozzarella",
     price: 79,
-    imageUrl:
-      "/assets/ingredients/creamy-mozzarella.png",
+    imageUrl: "/assets/ingredients/creamy-mozzarella.png",
   },
   {
-    name: "Сыры чеддер и пармезан",
+    name: "Cheddar and Parmesan Cheeses",
     price: 79,
-    imageUrl:
-      "/assets/ingredients/cheddar-and-parmesan-cheeses.png",
+    imageUrl: "/assets/ingredients/cheddar-and-parmesan-cheeses.png",
   },
   {
-    name: "Острый перец халапеньо",
+    name: "Spicy Jalapeño Pepper",
     price: 59,
-    imageUrl:
-      "/assets/ingredients/spicy-jalapeno-pepper.png",
+    imageUrl: "/assets/ingredients/spicy-jalapeno-pepper.png",
   },
   {
-    name: "Нежный цыпленок",
+    name: "Tender Chicken",
     price: 79,
-    imageUrl:
-      "/assets/ingredients/tender-chicken.png",
+    imageUrl: "/assets/ingredients/tender-chicken.png",
   },
   {
-    name: "Шампиньоны",
+    name: "Champignons",
     price: 59,
-    imageUrl:
-      "/assets/ingredients/champignons.png",
+    imageUrl: "/assets/ingredients/champignons.png",
   },
   {
-    name: "Ветчина",
+    name: "Ham",
     price: 79,
-    imageUrl:
-      "/assets/ingredients/ham.png",
+    imageUrl: "/assets/ingredients/ham.png",
   },
   {
-    name: "Пикантная пепперони",
+    name: "Spicy Pepperoni",
     price: 79,
-    imageUrl:
-      "/assets/ingredients/spicy-pepperoni.png",
+    imageUrl: "/assets/ingredients/spicy-pepperoni.png",
   },
   {
-    name: "Острая чоризо",
+    name: "Spicy Chorizo",
     price: 79,
-    imageUrl:
-      "/assets/ingredients/spicy-chorizo.png",
+    imageUrl: "/assets/ingredients/spicy-chorizo.png",
   },
   {
-    name: "Маринованные огурчики",
+    name: "Pickled Cucumbers",
     price: 59,
-    imageUrl:
-      "/assets/ingredients/pickled-cucumbers.png",
+    imageUrl: "/assets/ingredients/pickled-cucumbers.png",
   },
   {
-    name: "Свежие томаты",
+    name: "Fresh Tomatoes",
     price: 59,
-    imageUrl:
-      "/assets/ingredients/fresh-tomatoes.png",
+    imageUrl: "/assets/ingredients/fresh-tomatoes.png",
   },
   {
-    name: "Красный лук",
+    name: "Red Onion",
     price: 59,
-    imageUrl:
-      "/assets/ingredients/red-onion.png",
+    imageUrl: "/assets/ingredients/red-onion.png",
   },
   {
-    name: "Сочные ананасы",
+    name: "Juicy Pineapple",
     price: 59,
-    imageUrl:
-      "/assets/ingredients/juicy-pineapple.png",
+    imageUrl: "/assets/ingredients/juicy-pineapple.png",
   },
   {
-    name: "Итальянские травы",
+    name: "Italian Herbs",
     price: 39,
-    imageUrl:
-      "/assets/ingredients/italian-herbs.png",
+    imageUrl: "/assets/ingredients/italian-herbs.png",
   },
   {
-    name: "Сладкий перец",
+    name: "Sweet Pepper",
     price: 59,
-    imageUrl:
-      "/assets/ingredients/sweet-pepper.png",
+    imageUrl: "/assets/ingredients/sweet-pepper.png",
   },
   {
-    name: "Кубики брынзы",
+    name: "Bryndza Cubes",
     price: 79,
-    imageUrl:
-      "/assets/ingredients/bryndza-cubes.png",
+    imageUrl: "/assets/ingredients/bryndza-cubes.png",
   },
   {
-    name: "Митболы",
+    name: "Meatballs",
     price: 79,
-    imageUrl:
-      "/assets/ingredients/meatballs.png",
+    imageUrl: "/assets/ingredients/meatballs.png",
   },
 ].map((obj, index) => ({ id: index + 1, ...obj }));
 
 export const products = [
   {
-    name: "Омлет с ветчиной и грибами",
-    imageUrl:
-      "/assets/products/omelette-with-ham-and-mushrooms.webp",
+    name: "Omelette with Ham and Mushrooms",
+    imageUrl: "/assets/products/omelette-with-ham-and-mushrooms.webp",
     categoryId: 2,
   },
   {
-    name: "Омлет с пепперони",
-    imageUrl:
-      "/assets/products/omelette-with-pepperoni.webp",
+    name: "Omelette with Pepperoni",
+    imageUrl: "/assets/products/omelette-with-pepperoni.webp",
     categoryId: 2,
   },
   {
-    name: "Кофе Латте",
-    imageUrl:
-      "/assets/products/coffee-latte.webp",
+    name: "Coffee Latte",
+    imageUrl: "/assets/products/coffee-latte.webp",
     categoryId: 2,
   },
   {
-    name: "Дэнвич ветчина и сыр",
-    imageUrl:
-      "/assets/products/sandwich-with-ham-and-cheese.webp",
+    name: "Ham and Cheese Sandwich",
+    imageUrl: "/assets/products/sandwich-with-ham-and-cheese.webp",
     categoryId: 3,
   },
   {
-    name: "Куриные наггетсы",
-    imageUrl:
-      "/assets/products/chicken-nuggets.webp",
+    name: "Chicken Nuggets",
+    imageUrl: "/assets/products/chicken-nuggets.webp",
     categoryId: 3,
   },
   {
-    name: "Картофель из печи с соусом 🌱",
-    imageUrl:
-      "/assets/products/oven-baked-potatoes-with-sauce.webp",
+    name: "Oven-Baked Potatoes with Sauce 🌱",
+    imageUrl: "/assets/products/oven-baked-potatoes-with-sauce.webp",
     categoryId: 3,
   },
   {
-    name: "Додстер",
-    imageUrl:
-      "/assets/products/dodster.webp",
+    name: "Dodster",
+    imageUrl: "/assets/products/dodster.webp",
     categoryId: 3,
   },
   {
-    name: "Острый Додстер 🌶️🌶️",
-    imageUrl:
-      "/assets/products/spicy-dodster.webp",
+    name: "Spicy Dodster 🌶️🌶️",
+    imageUrl: "/assets/products/spicy-dodster.webp",
     categoryId: 3,
   },
   {
-    name: "Банановый молочный коктейль",
-    imageUrl:
-      "/assets/products/banana-milkshake.webp",
+    name: "Banana Milkshake",
+    imageUrl: "/assets/products/banana-milkshake.webp",
     categoryId: 4,
   },
   {
-    name: "Карамельное яблоко молочный коктейль",
-    imageUrl:
-      "/assets/products/caramel-apple-milkshake.webp",
+    name: "Caramel Apple Milkshake",
+    imageUrl: "/assets/products/caramel-apple-milkshake.webp",
     categoryId: 4,
   },
   {
-    name: "Молочный коктейль с печеньем Орео",
-    imageUrl:
-      "/assets/products/oreo-milkshake.webp",
+    name: "Oreo Milkshake",
+    imageUrl: "/assets/products/oreo-milkshake.webp",
     categoryId: 4,
   },
   {
-    name: "Классический молочный коктейль 👶",
-    imageUrl:
-      "/assets/products/classic-milkshake.webp",
+    name: "Classic Milkshake 👶",
+    imageUrl: "/assets/products/classic-milkshake.webp",
     categoryId: 4,
   },
   {
-    name: "Ирландский Капучино",
-    imageUrl:
-      "/assets/products/irish-cappuccino.webp",
+    name: "Irish Cappuccino",
+    imageUrl: "/assets/products/irish-cappuccino.webp",
     categoryId: 5,
   },
   {
-    name: "Кофе Карамельный капучино",
-    imageUrl:
-      "/assets/products/caramel-cappuccino.webp",
+    name: "Caramel Cappuccino",
+    imageUrl: "/assets/products/caramel-cappuccino.webp",
     categoryId: 5,
   },
   {
-    name: "Кофе Кокосовый латте",
-    imageUrl:
-      "/assets/products/coconut-latte.webp",
+    name: "Coconut Latte",
+    imageUrl: "/assets/products/coconut-latte.webp",
     categoryId: 5,
   },
   {
-    name: "Кофе Американо",
-    imageUrl:
-      "/assets/products/americano.webp",
+    name: "Americano",
+    imageUrl: "/assets/products/americano.webp",
     categoryId: 5,
   },
 ];

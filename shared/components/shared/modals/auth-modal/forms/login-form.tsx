@@ -22,23 +22,22 @@ export const LoginForm = ({ onClose }: Props) => {
 
   const onSubmit = async (data: TFormLoginValues) => {
     try {
-
-      const resp = await signIn('credentials', {
+      const resp = await signIn("credentials", {
         ...data,
         redirect: false,
-      })
+      });
 
-      if(!resp?.ok){
+      if (!resp?.ok) {
         throw Error();
       }
 
-      toast.success('Вы успешно вошли в аккаунт', {
-        icon: '✅'
-      })
-      onClose?.()
+      toast.success("You have successfully logged into your account", {
+        icon: "✅",
+      });
+      onClose?.();
     } catch (error) {
       console.log("Error [LOGIN]", error);
-      toast.error("Не удалось войти в аккаунт", {
+      toast.error("Failed to log into account", {
         icon: "❌",
       });
     }
@@ -52,9 +51,9 @@ export const LoginForm = ({ onClose }: Props) => {
       >
         <div className="flex justify-between items-center">
           <div className="mr-2">
-            <Title text="Вход в аккаунт" size="md" className="font-bold" />
+            <Title text="Login to account" size="md" className="font-bold" />
             <p className="text-gray-400">
-              Введите свою почту, чтобы войти в свой аккаунт
+              Enter your email to log into your account
             </p>
           </div>
           <img
@@ -73,7 +72,7 @@ export const LoginForm = ({ onClose }: Props) => {
           className="h-12 text-base"
           type="submit"
         >
-          Войти
+          Login
         </Button>
       </form>
     </FormProvider>

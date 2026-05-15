@@ -25,48 +25,53 @@ export const Header = ({
 
   useEffect(() => {
     let toastMessage = "";
+
     if (searchParams.has("paid")) {
-      toastMessage = "Заказ успешно оплачен! Информация отправлена на почту 🍕";
+      toastMessage = "Order paid successfully! Information sent to email 🍕";
     }
     if (searchParams.has("verified")) {
-      toastMessage = "Почта успешно подтверждена! 🍕";
+      toastMessage = "Email verified successfully! 🍕";
     }
 
-    if(toastMessage) {
-      setTimeout(() => {
-        router.replace('/');
-        toast.success(toastMessage, {
-          duration: 3000
-        })
-      }, 1000)
+    // 1. Declare variable in the common scope of the hook
+    let timer: NodeJS.Timeout | undefined;
+
+    if (toastMessage) {
+      timer = setTimeout(() => {
+        router.replace("/");
+        toast.success(toastMessage, { duration: 3000 });
+      }, 1000);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [searchParams, router]);
 
   return (
     <header className={cn("border-b", className)}>
       <Container className="flex items-center justify-between py-8">
-        {/* Левая часть */}
+        {/* Left side */}
         <Link href={"/"}>
           <div className="flex items-center gap-4">
             <Image src="/logo.png" alt="Logo" width={35} height={35} />
             <div>
-              <h1 className="text 2xl uppercase font-black">Next Pizza</h1>
+              <h1 className="text 2xl uppercase font-black">My Pizza</h1>
               <p className="text-sm text-gray-400 leading-3">
-                вкусней уже некуда
+                tastier than ever
               </p>
             </div>
           </div>
         </Link>
 
-        {/* Средняя часть */}
+        {/* Middle side */}
         {hasSearch && (
           <div className="mx-10 flex-1">
             <SearchInput />
           </div>
         )}
 
-        {/* Правая часть */}
+        {/* Right side */}
         <div className="flex items-center gap-3">
           <AuthModal
             open={openAuthModal}

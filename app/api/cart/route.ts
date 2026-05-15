@@ -30,8 +30,6 @@ export async function GET(req: NextRequest) {
   }
 }
 
-
-
 export async function POST(req: NextRequest) {
   try {
     let token = req.cookies.get("cartToken")?.value;
@@ -54,17 +52,19 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // 2. Ищем среди них тот, у которого набор ингредиентов в точности совпадает с data.ingredients
+    // 2. Find among them the one whose set of ingredients exactly matches data.ingredients
     const findCartItem = cartItems.find((item) => {
       const itemIngredientIds = item.ingredients.map((i) => i.id);
-      
+
       // Если количество ингредиентов разное — это разные товары
       if (itemIngredientIds.length !== (data.ingredients?.length || 0)) {
         return false;
       }
 
       // Если количество совпадает, проверяем, что все ID из data.ingredients есть в товаре
-      return data.ingredients?.every((id) => itemIngredientIds.includes(id)) ?? true;
+      return (
+        data.ingredients?.every((id) => itemIngredientIds.includes(id)) ?? true
+      );
     });
 
     if (findCartItem) {
@@ -94,9 +94,8 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.log("[CART_POST] Server error", error);
     return NextResponse.json(
-      { message: "Не удалось создать корзину" },
+      { message: "Failed to create cart" },
       { status: 500 },
     );
   }
 }
-
