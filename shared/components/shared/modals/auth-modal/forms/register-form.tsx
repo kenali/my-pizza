@@ -31,13 +31,13 @@ export const RegisterForm = ({ onClose }: Props) => {
         password: data.password,
       });
 
-      toast.success("Вы успешно вошли в аккаунт", {
+      toast.success("Registration successful", {
         icon: "✅",
       });
       onClose?.();
     } catch (error) {
       console.log("Error [LOGIN]", error);
-      toast.error("Не удалось войти в аккаунт", {
+      toast.error("Registration failed", {
         icon: "❌",
       });
     }
@@ -51,9 +51,9 @@ export const RegisterForm = ({ onClose }: Props) => {
       >
         <div className="flex justify-between items-center">
           <div className="mr-2">
-            <Title text="Вход в аккаунт" size="md" className="font-bold" />
+            <Title text="Create account" size="md" className="font-bold" />
             <p className="text-gray-400">
-              Введите данные, чтобы создать аккаунт
+              Enter your details to create an account
             </p>
           </div>
           <img
@@ -79,7 +79,7 @@ export const RegisterForm = ({ onClose }: Props) => {
           className="h-12 text-base"
           type="submit"
         >
-          Зарегестрироваться
+          Register
         </Button>
       </form>
     </FormProvider>

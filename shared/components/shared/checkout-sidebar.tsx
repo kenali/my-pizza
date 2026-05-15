@@ -20,7 +20,7 @@ export const CheckoutSidebar = ({ totalAmount, loading, className }: Props) => {
   return (
     <WhiteBlock className={cn("p-6 sticky top-4", className)}>
       <div className="flex flex-col gap-1">
-        <span className="text-xl">Итого:</span>
+        <span className="text-xl">Total:</span>
         {loading ? (
           <Skeleton className="h-11 w-48" />
         ) : (
@@ -34,7 +34,7 @@ export const CheckoutSidebar = ({ totalAmount, loading, className }: Props) => {
         title={
           <div className="flex items-center">
             <Package size={18} className="mr-2 text-gray-300" />
-            Стоимость корзины:
+            Cart cost:
           </div>
         }
         value={
@@ -49,7 +49,7 @@ export const CheckoutSidebar = ({ totalAmount, loading, className }: Props) => {
         title={
           <div className="flex items-center">
             <Percent size={18} className="mr-2 text-gray-300" />
-            Налоги:
+            Taxes:
           </div>
         }
         value={
@@ -64,7 +64,7 @@ export const CheckoutSidebar = ({ totalAmount, loading, className }: Props) => {
         title={
           <div className="flex items-center">
             <Truck size={18} className="mr-2 text-gray-300" />
-            Доставка:
+            Delivery:
           </div>
         }
         value={
@@ -81,7 +81,7 @@ export const CheckoutSidebar = ({ totalAmount, loading, className }: Props) => {
         type="submit"
         className="w-full h-14 rounded-2xl mt-6 text-base font-bold"
       >
-        Перейти к оплате
+        Proceed to payment
         <ArrowRight className="w-5 ml-2" />
       </Button>
     </WhiteBlock>

@@ -25,11 +25,11 @@ export const ProductForm = ({ product, onClose }: Props) => {
         productItemId,
         ingredients,
       });
-      toast.success(`${product.name} успешно добавлена в корзину`);
+      toast.success(`${product.name} added to cart successfully`);
       onClose?.();
     } catch (error) {
       console.error(error);
-      toast.error(`${product.name} не удалось добавить в корзину`);
+      toast.error(`Failed to add ${product.name} to cart`);
     }
   };
 

@@ -24,38 +24,38 @@ export const Filters = ({ className }: Props) => {
 
   return (
     <div className={className}>
-      <Title text="Фильтрация" size="sm" className="mb-5 font-bold" />
+      <Title text="Filters" size="sm" className="mb-5 font-bold" />
 
       {/* Top checkboxes */}
 
       <CheckboxFiltersGroup
-        title="Тип теста"
+        title="Dough type"
         name="pizzaTypes"
         className="mb-5"
         selected={filters.pizzaTypes}
         onClickCheckbox={filters.setPizzaTypes}
         items={[
-          { text: "Тонкое", value: "1" },
-          { text: "Традиционное", value: "2" },
+          { text: "Thin", value: "1" },
+          { text: "Traditional", value: "2" },
         ]}
       />
 
       <CheckboxFiltersGroup
-        title="Размеры"
+        title="Sizes"
         name="sizes"
         className="mb-5"
         selected={filters.sizes}
         onClickCheckbox={filters.setSizes}
         items={[
-          { text: "20см", value: "20" },
-          { text: "30см", value: "30" },
-          { text: "40см", value: "40" },
+          { text: "20cm", value: "20" },
+          { text: "30cm", value: "30" },
+          { text: "40cm", value: "40" },
         ]}
       />
 
       {/* Price filters */}
       <div className="mt-5 border-y border-y-neutral-100 py-6 pb-7">
-        <p className="font-bold mb-3">Цена от и до:</p>
+        <p className="font-bold mb-3">Price from and to:</p>
         <div className="flex gap-3 mb-5">
           <Input
             type="number"
@@ -92,7 +92,7 @@ export const Filters = ({ className }: Props) => {
       </div>
 
       <CheckboxFiltersGroup
-        title="Ингридиенты"
+        title="Ingredients"
         name="ingridients"
         className="mt-5"
         limit={6}

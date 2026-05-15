@@ -42,7 +42,7 @@ export const ProductCard = ({
 
           <Button variant="secondary" className="text-base font-bold">
             <Plus size={20} className="mr-1" />
-            Добавить
+            Add
           </Button>
         </div>
       </Link>

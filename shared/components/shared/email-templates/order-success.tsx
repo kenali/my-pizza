@@ -6,10 +6,11 @@ interface Props {
 export const OrderSuccessTemplate = ({ orderId, totalAmount }: Props) => {
   return (
     <div>
-      <h1>Спасибо за ваш заказ! 🎉</h1>
+      <h1>Thank you for your order! 🎉</h1>
 
       <p>
-        Ваш заказ #{orderId} оплачен. На сумму {totalAmount} ₴ успешно оплачен.
+        Your order #{orderId} has been paid. The amount of {totalAmount} ₴ has
+        been successfully paid.
       </p>
     </div>
   );
